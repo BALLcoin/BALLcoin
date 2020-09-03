@@ -210,8 +210,8 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "04b289a58feffeafb48e295d4299c9e85ffc4897992c0c233d1ab2a8502eb678e4e239b819893fe128718c3af77ab6b2006d43780cfb9ef32ab637f11c1b68dda8";
-        strSporkKeyOld = "04b289a58feffeafb48e295d4299c9e85ffc4897992c0c233d1ab2a8502eb678e4e239b819893fe128718c3af77ab6b2006d43780cfb9ef32ab637f11c1b68dda8";
+        strSporkKey = "042d34a6632a386aed9f7b74961ce3eff4bdf40d2bf6575826174f1825080b6c9cac7f84b7bd1eb9347031ebb6f05a5328d796eff2eb0d8c101a75b8bc8f0ab401";
+        strSporkKeyOld = "042d34a6632a386aed9f7b74961ce3eff4bdf40d2bf6575826174f1825080b6c9cac7f84b7bd1eb9347031ebb6f05a5328d796eff2eb0d8c101a75b8bc8f0ab401";
         strObfuscationPoolDummyAddress = "D87q2gC9j6nNrnzCsg4aY6bHMLsT9nUhEw";
         nStartMasternodePayments = 1598893200; //Mon, 31 Aug 2020 17:00:00 +0000 
 
