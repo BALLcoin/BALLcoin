@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018 The PIVX developers
+// Copyright (c) 2017-2018 The BALLcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(zerocoin_wrapped_serial_spend_test)
     string strWalletFile = "unittestwallet.dat";
     CWalletDB walletdb(strWalletFile, "cr+");
     CWallet wallet(strWalletFile);
-    CzPIVWallet *czPIVWallet = new CzPIVWallet(wallet.strWalletFile);
+    CzBALLWallet *czBALLWallet = new CzBALLWallet(wallet.strWalletFile);
 
     // Get the 5 created mints.
     CoinDenomination denom = CoinDenomination::ZQ_FIFTY;
@@ -48,8 +48,8 @@ BOOST_AUTO_TEST_CASE(zerocoin_wrapped_serial_spend_test)
     for (unsigned int i = 0; i < TESTS_COINS_TO_ACCUMULATE; i++) {
         PrivateCoin coin(ZCParams, denom, false);
         CDeterministicMint dMint;
-        czPIVWallet->GenerateDeterministicZPIV(denom, coin, dMint, true);
-        czPIVWallet->UpdateCount();
+        czBALLWallet->GenerateDeterministicZBALL(denom, coin, dMint, true);
+        czBALLWallet->UpdateCount();
         vCoins.emplace_back(coin);
     }
 

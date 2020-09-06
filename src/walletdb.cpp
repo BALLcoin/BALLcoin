@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2015-2018 The BALLcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -905,7 +905,7 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, vector<CWalletTx>& vWtx)
 void ThreadFlushWalletDB(const string& strFile)
 {
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("pivx-wallet");
+    RenameThread("ballcoin-wallet");
 
     static bool fOneThread;
     if (fOneThread)
@@ -1323,7 +1323,7 @@ bool CWalletDB::ReadCurrentSeedHash(uint256& hashSeed)
     return Read(string("seedhash"), hashSeed);
 }
 
-bool CWalletDB::WriteZPIVSeed(const uint256& hashSeed, const vector<unsigned char>& seed)
+bool CWalletDB::WriteZBALLSeed(const uint256& hashSeed, const vector<unsigned char>& seed)
 {
     if (!WriteCurrentSeedHash(hashSeed))
         return error("%s: failed to write current seed hash", __func__);
@@ -1331,13 +1331,13 @@ bool CWalletDB::WriteZPIVSeed(const uint256& hashSeed, const vector<unsigned cha
     return Write(make_pair(string("dzs"), hashSeed), seed);
 }
 
-bool CWalletDB::EraseZPIVSeed()
+bool CWalletDB::EraseZBALLSeed()
 {
     uint256 hash;
     if(!ReadCurrentSeedHash(hash)){
         return error("Failed to read a current seed hash");
     }
-    if(!WriteZPIVSeed(hash, ToByteVector(base_uint<256>(0) << 256))) {
+    if(!WriteZBALLSeed(hash, ToByteVector(base_uint<256>(0) << 256))) {
         return error("Failed to write empty seed to wallet");
     }
     if(!WriteCurrentSeedHash(0)) {
@@ -1347,27 +1347,27 @@ bool CWalletDB::EraseZPIVSeed()
     return true;
 }
 
-bool CWalletDB::EraseZPIVSeed_deprecated()
+bool CWalletDB::EraseZBALLSeed_deprecated()
 {
     return Erase(string("dzs"));
 }
 
-bool CWalletDB::ReadZPIVSeed(const uint256& hashSeed, vector<unsigned char>& seed)
+bool CWalletDB::ReadZBALLSeed(const uint256& hashSeed, vector<unsigned char>& seed)
 {
     return Read(make_pair(string("dzs"), hashSeed), seed);
 }
 
-bool CWalletDB::ReadZPIVSeed_deprecated(uint256& seed)
+bool CWalletDB::ReadZBALLSeed_deprecated(uint256& seed)
 {
     return Read(string("dzs"), seed);
 }
 
-bool CWalletDB::WriteZPIVCount(const uint32_t& nCount)
+bool CWalletDB::WriteZBALLCount(const uint32_t& nCount)
 {
     return Write(string("dzc"), nCount);
 }
 
-bool CWalletDB::ReadZPIVCount(uint32_t& nCount)
+bool CWalletDB::ReadZBALLCount(uint32_t& nCount)
 {
     return Read(string("dzc"), nCount);
 }

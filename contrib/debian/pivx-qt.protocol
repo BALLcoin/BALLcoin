@@ -1,6 +1,6 @@
 [Protocol]
-exec=pivx-qt '%u'
-protocol=pivx
+exec=ballcoin-qt '%u'
+protocol=ballcoin
 input=none
 output=none
 helper=true

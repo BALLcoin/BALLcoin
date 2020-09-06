@@ -1,11 +1,11 @@
 //
-// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2015-2018 The BALLcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
 
-#ifndef PIVX_LIGHTZPIVTHREAD_H
-#define PIVX_LIGHTZPIVTHREAD_H
+#ifndef BALLcoin_LIGHTZBALLTHREAD_H
+#define BALLcoin_LIGHTZBALLTHREAD_H
 
 #include <atomic>
 #include "genwit.h"
@@ -43,7 +43,7 @@ public:
 
     bool addWitWork(CGenWit wit) {
         if (!isWorkerRunning) {
-            LogPrintf("%s not running trying to add wit work \n", "pivx-light-thread");
+            LogPrintf("%s not running trying to add wit work \n", "ballcoin-light-thread");
             return false;
         }
         requestsQueue.push(wit);
@@ -51,21 +51,21 @@ public:
     }
 
     void StartLightZpivThread(boost::thread_group& threadGroup) {
-        LogPrintf("%s thread start\n", "pivx-light-thread");
-        threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZPIVSimplified, this));
+        LogPrintf("%s thread start\n", "ballcoin-light-thread");
+        threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZBALLSimplified, this));
     }
 
     void StopLightZpivThread() {
         threadIns.interrupt();
-        LogPrintf("%s thread interrupted\n", "pivx-light-thread");
+        LogPrintf("%s thread interrupted\n", "ballcoin-light-thread");
     }
 
 private:
 
-    void ThreadLightZPIVSimplified();
+    void ThreadLightZBALLSimplified();
 
     void rejectWork(CGenWit& wit, int blockHeight, uint32_t errorNumber);
 
 };
 
-#endif //PIVX_LIGHTZPIVTHREAD_H
+#endif //BALLcoin_LIGHTZBALLTHREAD_H

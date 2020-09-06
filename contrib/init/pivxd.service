@@ -5,19 +5,19 @@
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/pivx/pivx.conf
+# /etc/ballcoin/ballcoin.conf
 
 [Unit]
-Description=PIVX daemon
+Description=BALLcoin daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/pivxd -daemon -conf=/etc/pivx/pivx.conf -pid=/run/pivxd/pivxd.pid
-# Creates /run/pivxd owned by pivx
-RuntimeDirectory=pivxd
-User=pivx
+ExecStart=/usr/bin/ballcoind -daemon -conf=/etc/ballcoin/ballcoin.conf -pid=/run/ballcoind/ballcoind.pid
+# Creates /run/ballcoind owned by ballcoin
+RuntimeDirectory=ballcoind
+User=ballcoin
 Type=forking
-PIDFile=/run/pivxd/pivxd.pid
+PIDFile=/run/ballcoind/ballcoind.pid
 Restart=on-failure
 
 # Hardening measures

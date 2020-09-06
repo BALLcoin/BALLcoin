@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 The PIVX developers
+// Copyright (c) 2017-2018 The BALLcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_ZEROCOIN_H
-#define PIVX_ZEROCOIN_H
+#ifndef BALLcoin_ZEROCOIN_H
+#define BALLcoin_ZEROCOIN_H
 
 #include <amount.h>
 #include <limits.h>
@@ -259,4 +259,4 @@ int GetWrapppedSerialInflation(libzerocoin::CoinDenomination denom);
 
 int64_t GetWrapppedSerialInflationAmount();
 
-#endif //PIVX_ZEROCOIN_H
+#endif //BALLcoin_ZEROCOIN_H

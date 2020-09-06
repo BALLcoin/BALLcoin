@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2015-2018 The BALLcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -268,11 +268,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop PIVX server.");
+            "\nStop BALLcoin server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "PIVX server stopping";
+    return "BALLcoin server stopping";
 }
 
 
@@ -364,37 +364,37 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblock",           &waitforblock,           true,  true,  false  },
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
-        /* PIVX features */
-        {"pivx", "masternode", &masternode, true, true, false},
-        {"pivx", "listmasternodes", &listmasternodes, true, true, false},
-        {"pivx", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"pivx", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"pivx", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
-        {"pivx", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
-        {"pivx", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
-        {"pivx", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"pivx", "masternodedebug", &masternodedebug, true, true, false},
-        {"pivx", "startmasternode", &startmasternode, true, true, false},
-        {"pivx", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"pivx", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"pivx", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"pivx", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"pivx", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"pivx", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"pivx", "mnbudget", &mnbudget, true, true, false},
-        {"pivx", "preparebudget", &preparebudget, true, true, false},
-        {"pivx", "submitbudget", &submitbudget, true, true, false},
-        {"pivx", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"pivx", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"pivx", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"pivx", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"pivx", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"pivx", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"pivx", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"pivx", "checkbudgets", &checkbudgets, true, true, false},
-        {"pivx", "mnsync", &mnsync, true, true, false},
-        {"pivx", "spork", &spork, true, true, false},
-        {"pivx", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* BALLcoin features */
+        {"ballcoin", "masternode", &masternode, true, true, false},
+        {"ballcoin", "listmasternodes", &listmasternodes, true, true, false},
+        {"ballcoin", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"ballcoin", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"ballcoin", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
+        {"ballcoin", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
+        {"ballcoin", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
+        {"ballcoin", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"ballcoin", "masternodedebug", &masternodedebug, true, true, false},
+        {"ballcoin", "startmasternode", &startmasternode, true, true, false},
+        {"ballcoin", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"ballcoin", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"ballcoin", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"ballcoin", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"ballcoin", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"ballcoin", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"ballcoin", "mnbudget", &mnbudget, true, true, false},
+        {"ballcoin", "preparebudget", &preparebudget, true, true, false},
+        {"ballcoin", "submitbudget", &submitbudget, true, true, false},
+        {"ballcoin", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"ballcoin", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"ballcoin", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"ballcoin", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"ballcoin", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"ballcoin", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"ballcoin", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"ballcoin", "checkbudgets", &checkbudgets, true, true, false},
+        {"ballcoin", "mnsync", &mnsync, true, true, false},
+        {"ballcoin", "spork", &spork, true, true, false},
+        {"ballcoin", "getpoolinfo", &getpoolinfo, true, true, false},
 
 #ifdef ENABLE_WALLET
         /* Wallet */
@@ -633,7 +633,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> pivx-cli " + methodname + " " + args + "\n";
+    return "> ballcoin-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

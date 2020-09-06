@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 The PIVX developers
+// Copyright (c) 2017-2018 The BALLcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_ACCUMULATORS_H
-#define PIVX_ACCUMULATORS_H
+#ifndef BALLcoin_ACCUMULATORS_H
+#define BALLcoin_ACCUMULATORS_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Coin.h"
@@ -90,5 +90,5 @@ public:
     searchMintHeightException(const string &message) : message(message) {}
 };
 
-#endif //PIVX_ACCUMULATORS_H
+#endif //BALLcoin_ACCUMULATORS_H
 

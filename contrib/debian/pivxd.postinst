@@ -1,15 +1,15 @@
 
 #!/bin/sh
 
-# setup pivx account, homedir etc
+# setup ballcoin account, homedir etc
 
 set -e
 
-BCUSER="pivx"
-BCHOME="/var/lib/pivx"
+BCUSER="ballcoin"
+BCHOME="/var/lib/ballcoin"
 
 if [ "$1" = "configure" ]; then
-	# Add pivx user/group - this will gracefully abort if the user already exists.
+	# Add ballcoin user/group - this will gracefully abort if the user already exists.
 	# A homedir is never created.
 	set +e
 	adduser --system --home "${BCHOME}" --no-create-home --group "${BCUSER}" 2>/dev/null
