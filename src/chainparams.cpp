@@ -54,13 +54,14 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     (0, uint256("d1e03b7dafd6d91b5e723b5f68ba96c8c79b729d55de47b58838d7f441373490"))
+    (10000, uint256("834967747a125eff66221c2803b44aef195a9bd045d268f7b0e6483637742611"))
     // (1401, uint256("b6f7982e833d9855cea611b20e8f2029db008e23446146ce0f6af480ed8cd84e"))
 ; 
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1598875361, // * UNIX timestamp of last checkpoint block
-    0,    // * total number of transactions between genesis and last checkpoint
+    1599734752, // * UNIX timestamp of last checkpoint block
+    10000,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -184,11 +185,9 @@ public:
         assert(hashGenesisBlock == uint256("d1e03b7dafd6d91b5e723b5f68ba96c8c79b729d55de47b58838d7f441373490"));
         assert(genesis.hashMerkleRoot == uint256("b9694e0b1df7aac3a5505f4c7a4f231bca874eb5dc32c19e3dcfaf635d053727"));
 
-        // vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "ballcoin.seed.fuzzbawls.pw"));     // Primary DNS Seeder from Fuzzbawls
-        // vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "ballcoin.seed2.fuzzbawls.pw"));    // Secondary DNS Seeder from Fuzzbawls
-        // vSeeds.push_back(CDNSSeedData("coin-server.com", "coin-server.com"));         // Single node address
-        // vSeeds.push_back(CDNSSeedData("s3v3nh4cks.ddns.net", "s3v3nh4cks.ddns.net")); // Single node address
-        // vSeeds.push_back(CDNSSeedData("178.254.23.111", "178.254.23.111"));           // Single node address
+        vSeeds.push_back(CDNSSeedData("seed1.ball-coin.com", "seed1.ball-coin.com"));     // Primary DNS Seeder from matwater
+        vSeeds.push_back(CDNSSeedData("seed2.ball-coin.com", "seed2.ball-coin.com"));     // Secondary DNS Seeder from matwater
+
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25); // 25 = B
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
