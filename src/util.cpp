@@ -113,8 +113,8 @@ bool fLiteMode = false;
 bool fEnableSwiftTX = true;
 int nSwiftTXDepth = 5;
 // Automatic Zerocoin minting
-bool fEnableZeromint = true;
-bool fEnableAutoConvert = true;
+bool fEnableZeromint = false; //1.1.1 update to disable zeromint
+bool fEnableAutoConvert = false; //1.1.1 update to disable zeromint
 int nZeromintPercentage = 10;
 int nPreferredDenom = 0;
 const int64_t AUTOMINT_DELAY = (60 * 525600); // Wait at least 5 minutes until Automint starts MattW was 5 mins but extended to a year to prevent AutoMint

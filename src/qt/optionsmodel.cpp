@@ -82,7 +82,7 @@ void OptionsModel::Init()
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
 
     if (!settings.contains("fZeromintEnable"))
-        settings.setValue("fZeromintEnable", true);
+        settings.setValue("fZeromintEnable", false); //1.1.1 update to disable zeromint
     fEnableZeromint = settings.value("fZeromintEnable").toBool();
 
     if (!settings.contains("fEnableAutoConvert"))
@@ -383,7 +383,7 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             break;
         case ZeromintEnable:
             fEnableZeromint = value.toBool();
-            settings.setValue("fZeromintEnable", fEnableZeromint);
+            settings.setValue("fZeromintEnable", false); //1.1.1 update to disable zeromint
             emit zeromintEnableChanged(fEnableZeromint);
             break;
         case ZeromintAddresses:

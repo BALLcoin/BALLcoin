@@ -88,7 +88,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             aboutAction(0),
                                                                             receiveCoinsAction(0),
                                                                             governanceAction(0),
-                                                                            privacyAction(0),
+                                                                            // privacyAction(0), //1.1.1 disable privacy
                                                                             optionsAction(0),
                                                                             toggleHideAction(0),
                                                                             encryptWalletAction(0),
@@ -340,16 +340,16 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(historyAction);
 
-    privacyAction = new QAction(QIcon(":/icons/privacy"), tr("&Privacy"), this);
-    privacyAction->setStatusTip(tr("Privacy Actions for zBALL"));
-    privacyAction->setToolTip(privacyAction->statusTip());
-    privacyAction->setCheckable(true);
+    // privacyAction = new QAction(QIcon(":/icons/privacy"), tr("&Privacy"), this);
+    // privacyAction->setStatusTip(tr("Privacy Actions for zBALL"));
+    // privacyAction->setToolTip(privacyAction->statusTip());
+    // privacyAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    privacyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+    // privacyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
 #else
-    privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    // privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-    tabGroup->addAction(privacyAction);
+    // tabGroup->addAction(privacyAction); //1.1.1 disable privacy
 
 #ifdef ENABLE_WALLET
 
@@ -388,8 +388,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
-    connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
+    // connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));  //1.1.1 disable privacy
+    // connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage())); //1.1.1 disable privacy
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(governanceAction, SIGNAL(triggered()), this, SLOT(gotoGovernancePage()));
@@ -571,9 +571,9 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
-        toolbar->addAction(privacyAction);
+        // toolbar->addAction(privacyAction); //1.1.1 disable privacy
         toolbar->addAction(historyAction);
-        toolbar->addAction(privacyAction);
+        // toolbar->addAction(privacyAction); //1.1.1 disable privacy
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -677,7 +677,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
     receiveCoinsAction->setEnabled(enabled);
-    privacyAction->setEnabled(enabled);
+    // privacyAction->setEnabled(false);  //1.1.1 disable privacy
     historyAction->setEnabled(enabled);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
@@ -734,7 +734,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(sendCoinsAction);
     trayIconMenu->addAction(receiveCoinsAction);
-    trayIconMenu->addAction(privacyAction);
+    // trayIconMenu->addAction(privacyAction); //1.1.1 disable privacy
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(signMessageAction);
     trayIconMenu->addAction(verifyMessageAction);
@@ -839,7 +839,7 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoPrivacyPage()
 {
-    privacyAction->setChecked(true);
+    // privacyAction->setChecked(true); //1.1.1 disable privacy
     if (walletFrame) walletFrame->gotoPrivacyPage();
 }
 
@@ -1208,15 +1208,15 @@ void BitcoinGUI::setAutoMintStatus()
 {
     if (walletFrame) {
         if (fEnableZeromint) {
-            labelAutoMintIcon->show();
-            labelAutoMintIcon->setIcon(QIcon(":/icons/automint_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-            labelAutoMintIcon->setToolTip(
-                    tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n");
+            // labelAutoMintIcon->show();  //1.1.1 update to disable zeromint
+            // labelAutoMintIcon->setIcon(QIcon(":/icons/automint_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+            // labelAutoMintIcon->setToolTip(
+            //         tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n");
         } else {
-            labelAutoMintIcon->show();
-            labelAutoMintIcon->setIcon(
-                    QIcon(":/icons/automint_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-            labelAutoMintIcon->setToolTip(tr("AutoMint is disabled"));
+            // labelAutoMintIcon->show(); //1.1.1 update to disable zeromint
+            // labelAutoMintIcon->setIcon(
+            //         QIcon(":/icons/automint_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+            // labelAutoMintIcon->setToolTip(tr("AutoMint is disabled"));
         }
     }
 }

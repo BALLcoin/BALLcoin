@@ -110,7 +110,7 @@ private:
     QAction* aboutAction;
     QAction* receiveCoinsAction;
     QAction* governanceAction;
-    QAction* privacyAction;
+    // QAction* privacyAction; //1.1.1 disable privacy
     QAction* optionsAction;
     QAction* toggleHideAction;
     QAction* encryptWalletAction;
