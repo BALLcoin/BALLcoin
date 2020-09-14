@@ -2,7 +2,7 @@ BALLcoin Core repository
 =====================================
 
 
-More information at [ballcoin.org](http://www.ball-coin.com) 
+More information at [www.ball-coin.com](http://www.ball-coin.com) 
 Visit our ANN thread at [Discord](https://discord.gg/kGTB6gS)
 
 
