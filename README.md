@@ -14,46 +14,28 @@ More information at [ballcoin.org](http://www.ballcoin.org) Visit our ANN thread
 
 ### Coin Specs
 <table>
-<tr><td>Algo</td><td>Quark</td></tr>
+<tr><td>Algo</td><td>X11</td></tr>
 <tr><td>Block Time</td><td>60 Seconds</td></tr>
 <tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
-<tr><td>Max Coin Supply (PoW Phase)</td><td>43,199,500 BALL</td></tr>
-<tr><td>Max Coin Supply (PoS Phase)</td><td>Infinite</td></tr>
-<tr><td>Premine</td><td>60,000 BALL*</td></tr>
+<tr><td>Max Coin Supply (PoS Phase)</td><td>21,000,000</td></tr>
 </table>
 
-*60,000 BALL Premine was burned in block [279917](http://www.presstab.pw/phpexplorer/BALLcoin/block.php?blockhash=206d9cfe859798a0b0898ab00d7300be94de0f5469bb446cecb41c3e173a57e0)
+
 
 ### Reward Distribution
 
-<table>
-<th colspan=4>Genesis Block</th>
-<tr><th>Block Height</th><th>Reward Amount</th><th>Notes</th></tr>
-<tr><td>1</td><td>60,000 BALL</td><td>Initial Pre-mine, burnt in block <a href="http://www.presstab.pw/phpexplorer/BALLcoin/block.php?blockhash=206d9cfe859798a0b0898ab00d7300be94de0f5469bb446cecb41c3e173a57e0">279917</a></td></tr>
-</table>
-
-### PoW Rewards Breakdown
-
-<table>
-<th>Block Height</th><th>Masternodes</th><th>Miner</th><th>Budget</th>
-<tr><td>2-43200</td><td>20% (50 BALL)</td><td>80% (200 BALL)</td><td>N/A</td></tr>
-<tr><td>43201-151200</td><td>20% (50 BALL)</td><td>70% (200 BALL)</td><td>10% (25 BALL)</td></tr>
-<tr><td>151201-259200</td><td>45% (22.5 BALL)</td><td>45% (22.5 BALL)</td><td>10% (5 BALL)</td></tr>
-</table>
 
 ### PoS Rewards Breakdown
 
 <table>
-<th>Phase</th><th>Block Height</th><th>Reward</th><th>Masternodes & Stakers</th><th>Budget</th>
-<tr><td>Phase 0</td><td>259201-302399</td><td>50 BALL</td><td>90% (45 BALL)</td><td>10% (5 BALL)</td></tr>
-<tr><td>Phase 1</td><td>302400-345599</td><td>45 BALL</td><td>90% (40.5 BALL)</td><td>10% (4.5 BALL)</td></tr>
-<tr><td>Phase 2</td><td>345600-388799</td><td>40 BALL</td><td>90% (36 BALL)</td><td>10% (4 BALL)</td></tr>
-<tr><td>Phase 3</td><td>388800-431999</td><td>35 BALL</td><td>90% (31.5 BALL)</td><td>10% (3.5 BALL)</td></tr>
-<tr><td>Phase 4</td><td>432000-475199</td><td>30 BALL</td><td>90% (27 BALL)</td><td>10% (3 BALL)</td></tr>
-<tr><td>Phase 5</td><td>475200-518399</td><td>25 BALL</td><td>90% (22.5 BALL)</td><td>10% (2.5 BALL)</td></tr>
-<tr><td>Phase 6</td><td>518400-561599</td><td>20 BALL</td><td>90% (18 BALL)</td><td>10% (2 BALL)</td></tr>
-<tr><td>Phase 7</td><td>561600-604799</td><td>15 BALL</td><td>90% (13.5 BALL)</td><td>10% (1.5 BALL)</td></tr>
-<tr><td>Phase 8</td><td>604800-647999</td><td>10 BALL</td><td>90% (9 BALL)</td><td>10% (1 BALL)</td></tr>
-<tr><td>Phase 9</td><td>648000-1154203</td><td>5 BALL</td><td>90% (4.5 BALL)</td><td>10% (0.5 BALL)</td></tr>
-<tr><td>Phase X</td><td>1154203-∞</td><td>6 BALL</td><td>84% (5 BALL/zBALL)</td><td>16% (1 BALL)</td></tr>
+<th>Phase</th><th>Est. Start Date</th><th>Block Height(Start)</th><th>Block Height(Finish)</th><th>Reward</th><th>Masternodes</th><th>Stakers</th>
+<tr><td>Phase 1(Premine)</td><td>2/9/2020</td><td>1-14999</td><td>250 BALL</td><td>80% (50 BALL)</td><td>20% (200 BALL)</td></tr>
+<tr><td>Phase 2</td><td>14/9/2020</td><td>15000-104999</td><td>4 BALL</td><td>80% (3.2 BALL)</td><td>20% (0.8 BALL)</td></tr>
+<tr><td>Phase 3</td><td>12/11/2020</td><td>105000-194999</td><td>5 BALL</td><td>80% (4 BALL)</td><td>20% (1 BALL)</td></tr>
+<tr><td>Phase 4</td><td>12/1/2021</td><td>195000-285999</td><td>6 BALL</td><td>80% (4.8 BALL)</td><td>20% (1.2 BALL)</td></tr>
+<tr><td>Phase 5</td><td>12/3/2021</td><td>285000-374999</td><td>7 BALL</td><td>80% (5.6 BALL)</td><td>20% (1.4 BALL)</td></tr>
+<tr><td>Phase 6</td><td>12/5/2021</td><td>375000-464999</td><td>8 BALL</td><td>80% (6.4 BALL)</td><td>20% (1.6 BALL)</td></tr>
+<tr><td>Phase 7</td><td>12/7/2021</td><td>465000-554999</td><td>9 BALL</td><td>80% (7.2 BALL)</td><td>20% (1.8 BALL)</td></tr>
+<tr><td>Phase 8</td><td>12/9/2021</td><td>555000-</td><td>10 BALL</td><td>80% (8 BALL)</td><td>20% (2 BALL)</td></tr>
+
 </table>
