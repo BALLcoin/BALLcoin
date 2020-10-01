@@ -1,5 +1,6 @@
 ---
-name: "ballcoin-dmg-signer"
+name: "pivx-dmg-signer"
+distro: "ubuntu"
 suites:
 - "bionic"
 architectures:
@@ -7,11 +8,13 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/ballcoin-project/ballcoin-detached-sigs.git"
+- "url": "https://github.com/pivx-project/pivx-detached-sigs.git"
   "dir": "signature"
 files:
-- "ballcoin-osx-unsigned.tar.gz"
+- "pivx-osx-unsigned.tar.gz"
 script: |
+  set -e -o pipefail
+
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
   export PATH=`pwd`:$PATH
@@ -27,8 +30,8 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=ballcoin-osx-unsigned.tar.gz
-  SIGNED=ballcoin-osx-signed.dmg
+  UNSIGNED=pivx-osx-unsigned.tar.gz
+  SIGNED=pivx-osx-signed.dmg
 
   tar -xf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"
