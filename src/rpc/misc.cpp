@@ -179,7 +179,7 @@ UniValue mnsync(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() != 1 || (strMode != "status" && strMode != "reset" && strMode != "next")) {
         throw runtime_error(
-            "mnsync \"status|reset\next"\n"
+            "mnsync \"status|reset\next\"\n"
             "\nReturns the sync status or resets sync.\n"
 
             "\nArguments:\n"
