@@ -1,2 +1,2 @@
-contrib/ballcoind.bash-completion	ballcoind
-contrib/ballcoin-cli.bash-completion ballcoin-cli
+contrib/pivxd.bash-completion	pivxd
+contrib/pivx-cli.bash-completion pivx-cli

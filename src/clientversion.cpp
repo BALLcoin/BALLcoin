@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2017 The Bitcoin Core developers
-// Copyright (c) 2016-2017 The BALLcoin developers
+// Copyright (c) 2016-2019 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both ballcoind and ballcoin-qt, to make it harder for attackers to
+ * for both pivxd and pivx-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("BALLcoin Core");
+const std::string CLIENT_NAME("PIVX Core");
 
 /**
  * Client version number
@@ -45,8 +45,8 @@ const std::string CLIENT_NAME("BALLcoin Core");
 //! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "4104156b81b262c601afcc9e9ee4f6dc5e8d022a"
-#define GIT_COMMIT_DATE "Wed, 8 May 2019 00:31:48 -0700"
+#define GIT_COMMIT_ID "d19165ba5bcaf3b07ea675f139ad45706755dbaa"
+#define GIT_COMMIT_DATE "Sat, 21 Aug 2021 19:06:09 -0300"
 #endif
 
 #define BUILD_DESC_WITH_SUFFIX(maj, min, rev, build, suffix) \
@@ -90,6 +90,11 @@ static std::string FormatVersion(int nVersion)
 std::string FormatFullVersion()
 {
     return CLIENT_BUILD;
+}
+
+std::string FormatVersionFriendly()
+{
+    return FormatVersion(CLIENT_VERSION);
 }
 
 /** 

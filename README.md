@@ -1,36 +1,55 @@
-BALLcoin Core repository
+PIVX Core integration/staging repository
 =====================================
 
+[![master Actions Status](https://github.com/PIVX-Project/PIVX/workflows/CI%20Actions%20for%20PIVX/badge.svg)](https://github.com/PIVX-Project/PIVX/actions)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/PIVX-Project/pivx?color=%235c4b7d&cacheSeconds=3600)](https://github.com/PIVX-Project/PIVX/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/PIVX-Project/pivx?color=%235c4b7d&cacheSeconds=3600)](https://github.com/PIVX-Project/PIVX/releases)
 
-More information at [www.ball-coin.com](http://www.ball-coin.com) 
-Visit our ANN thread at [Discord](https://discord.gg/kGTB6gS)
+## What is PIVX?
 
+PIVX is an open source community-driven cryptocurrency, focused on five main aspects:
 
+(1) User Data Protection: Through the use of SHIELD, a zk-SNARKs based privacy protocol.
 
-### Coin Specs
-<table>
-<tr><td>Algo</td><td>X11</td></tr>
-<tr><td>Block Time</td><td>60 Seconds</td></tr>
-<tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
-<tr><td>Max Coin Supply (PoS Phase)</td><td>21,000,000</td></tr>
-</table>
+(2) Low environmental footprint and network participation equality: Through the use of a highly developed Proof of Stake protocol.
 
+(3) Decentralized Governance System: A DAO built on top of the tier two Masternodes network, enabling a monthly community treasury, proposals submission and decentralized voting.
 
+(4) Fast Transactions: Through the use of fast block times and the tier two network, PIVX is committed to continue researching new and better instant transactions mechanisms.
 
-### Reward Distribution
+(5) Ease of Use: PIVX is determined to offer the best possible graphical interface for a core node/wallet. A full featured graphical product for new and advanced users.
 
+A lot more information and specs at [PIVX.org](https://www.pivx.org/). Join the community at [PIVX Discord](https://discordapp.com/invite/jzqVsJd).
 
-### PoS Rewards Breakdown
+## License
+PIVX Core is released under the terms of the MIT license. See [COPYING](https://github.com/PIVX-Project/PIVX/blob/master/COPYING) for more information or see https://opensource.org/licenses/MIT.
 
-<table>
-<th>Phase</th><th>Est. Start Date</th><th>Block Height(Start)</th><th>Block Height(Finish)</th><th>Reward</th><th>Masternodes</th><th>Stakers</th>
-<tr><td>Phase 1(Premine)</td><td>2/9/2020</td><td>1</td><td>14999</td><td>250 BALL</td><td>80% (50 BALL)</td><td>20% (200 BALL)</td></tr>
-<tr><td>Phase 2</td><td>14/9/2020</td><td>15000</td><td>104999</td><td>4 BALL</td><td>80% (3.2 BALL)</td><td>20% (0.8 BALL)</td></tr>
-<tr><td>Phase 3</td><td>12/11/2020</td><td>105000</td><td>194999</td><td>5 BALL</td><td>80% (4 BALL)</td><td>20% (1 BALL)</td></tr>
-<tr><td>Phase 4</td><td>12/1/2021</td><td>195000</td><td>285999</td><td>6 BALL</td><td>80% (4.8 BALL)</td><td>20% (1.2 BALL)</td></tr>
-<tr><td>Phase 5</td><td>12/3/2021</td><td>285000</td><td>374999</td><td>7 BALL</td><td>80% (5.6 BALL)</td><td>20% (1.4 BALL)</td></tr>
-<tr><td>Phase 6</td><td>12/5/2021</td><td>375000</td><td>464999</td><td>8 BALL</td><td>80% (6.4 BALL)</td><td>20% (1.6 BALL)</td></tr>
-<tr><td>Phase 7</td><td>12/7/2021</td><td>465000</td><td>554999</td><td>9 BALL</td><td>80% (7.2 BALL)</td><td>20% (1.8 BALL)</td></tr>
-<tr><td>Phase 8</td><td>12/9/2021</td><td>555000</td><td></td><td>10 BALL</td><td>80% (8 BALL)</td><td>20% (2 BALL)</td></tr>
+## Development Process
 
-</table>
+The master branch is regularly built (see doc/build-*.md for instructions) and tested, but it is not guaranteed to be completely stable. [Tags](https://github.com/PIVX-Project/PIVX/tags) are created regularly from release branches to indicate new official, stable release versions of PIVX Core.
+
+The contribution workflow is described in [CONTRIBUTING.md](https://github.com/PIVX-Project/PIVX/blob/master/CONTRIBUTING.md) and useful hints for developers can be found in [doc/developer-notes.md](https://github.com/PIVX-Project/PIVX/blob/master/doc/developer-notes.md).
+
+## Testing
+
+Testing and code review is the bottleneck for development; we get more pull requests than we can review and test on short notice. Please be patient and help out by testing other people's pull requests, and remember this is a security-critical project where any mistake might cost people a lot of money.
+
+## Automated Testing
+
+Developers are strongly encouraged to write [unit tests](https://github.com/PIVX-Project/PIVX/blob/master/src/test/README.md) for new code, and to submit new unit tests for old code. Unit tests can be compiled and run (assuming they weren't disabled in configure) with: make check. Further details on running and extending unit tests can be found in [/src/test/README.md](https://github.com/PIVX-Project/PIVX/blob/master/src/test/README.md).
+
+There are also regression and integration tests, written in Python. These tests can be run (if the test dependencies are installed) with: test/functional/test_runner.py`
+
+The CI (Continuous Integration) systems make sure that every pull request is built for Windows, Linux, and macOS, and that unit/sanity tests are run automatically.
+
+## Manual Quality Assurance (QA) Testing
+
+Changes should be tested by somebody other than the developer who wrote the code. This is especially important for large or high-risk changes. It is useful to add a test plan to the pull request description if testing the changes is not straightforward.
+
+## Translations
+
+Changes to translations as well as new translations can be submitted to PIVX Core's Transifex page.
+
+Translations are periodically pulled from Transifex and merged into the git repository. See the [translation process](https://github.com/PIVX-Project/PIVX/blob/master/doc/translation_process.md) for details on how this works.
+
+Important: We do not accept translation changes as GitHub pull requests because the next pull from Transifex would automatically overwrite them again.

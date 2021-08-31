@@ -1,10 +1,10 @@
 
-## <summary>policy for ballcoin</summary>
+## <summary>policy for pivx</summary>
 
 
 ########################################
 ## <summary>
-##	Transition to ballcoin.
+##	Transition to pivx.
 ## </summary>
 ## <param name="domain">
 ## <summary>
@@ -12,19 +12,19 @@
 ## </summary>
 ## </param>
 #
-interface(`ballcoin_domtrans',`
+interface(`pivx_domtrans',`
 	gen_require(`
-		type ballcoin_t, ballcoin_exec_t;
+		type pivx_t, pivx_exec_t;
 	')
 
 	corecmd_search_bin($1)
-	domtrans_pattern($1, ballcoin_exec_t, ballcoin_t)
+	domtrans_pattern($1, pivx_exec_t, pivx_t)
 ')
 
 
 ########################################
 ## <summary>
-##	Execute ballcoin server in the ballcoin domain.
+##	Execute pivx server in the pivx domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -32,18 +32,18 @@ interface(`ballcoin_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`ballcoin_initrc_domtrans',`
+interface(`pivx_initrc_domtrans',`
 	gen_require(`
-		type ballcoin_initrc_exec_t;
+		type pivx_initrc_exec_t;
 	')
 
-	init_labeled_script_domtrans($1, ballcoin_initrc_exec_t)
+	init_labeled_script_domtrans($1, pivx_initrc_exec_t)
 ')
 
 
 ########################################
 ## <summary>
-##	Search ballcoin lib directories.
+##	Search pivx lib directories.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -51,18 +51,18 @@ interface(`ballcoin_initrc_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`ballcoin_search_lib',`
+interface(`pivx_search_lib',`
 	gen_require(`
-		type ballcoin_var_lib_t;
+		type pivx_var_lib_t;
 	')
 
-	allow $1 ballcoin_var_lib_t:dir search_dir_perms;
+	allow $1 pivx_var_lib_t:dir search_dir_perms;
 	files_search_var_lib($1)
 ')
 
 ########################################
 ## <summary>
-##	Read ballcoin lib files.
+##	Read pivx lib files.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -70,18 +70,18 @@ interface(`ballcoin_search_lib',`
 ##	</summary>
 ## </param>
 #
-interface(`ballcoin_read_lib_files',`
+interface(`pivx_read_lib_files',`
 	gen_require(`
-		type ballcoin_var_lib_t;
+		type pivx_var_lib_t;
 	')
 
 	files_search_var_lib($1)
-	read_files_pattern($1, ballcoin_var_lib_t, ballcoin_var_lib_t)
+	read_files_pattern($1, pivx_var_lib_t, pivx_var_lib_t)
 ')
 
 ########################################
 ## <summary>
-##	Manage ballcoin lib files.
+##	Manage pivx lib files.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -89,18 +89,18 @@ interface(`ballcoin_read_lib_files',`
 ##	</summary>
 ## </param>
 #
-interface(`ballcoin_manage_lib_files',`
+interface(`pivx_manage_lib_files',`
 	gen_require(`
-		type ballcoin_var_lib_t;
+		type pivx_var_lib_t;
 	')
 
 	files_search_var_lib($1)
-	manage_files_pattern($1, ballcoin_var_lib_t, ballcoin_var_lib_t)
+	manage_files_pattern($1, pivx_var_lib_t, pivx_var_lib_t)
 ')
 
 ########################################
 ## <summary>
-##	Manage ballcoin lib directories.
+##	Manage pivx lib directories.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -108,20 +108,20 @@ interface(`ballcoin_manage_lib_files',`
 ##	</summary>
 ## </param>
 #
-interface(`ballcoin_manage_lib_dirs',`
+interface(`pivx_manage_lib_dirs',`
 	gen_require(`
-		type ballcoin_var_lib_t;
+		type pivx_var_lib_t;
 	')
 
 	files_search_var_lib($1)
-	manage_dirs_pattern($1, ballcoin_var_lib_t, ballcoin_var_lib_t)
+	manage_dirs_pattern($1, pivx_var_lib_t, pivx_var_lib_t)
 ')
 
 
 ########################################
 ## <summary>
 ##	All of the rules required to administrate
-##	a ballcoin environment
+##	a pivx environment
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -135,23 +135,23 @@ interface(`ballcoin_manage_lib_dirs',`
 ## </param>
 ## <rolecap/>
 #
-interface(`ballcoin_admin',`
+interface(`pivx_admin',`
 	gen_require(`
-		type ballcoin_t;
-		type ballcoin_initrc_exec_t;
-		type ballcoin_var_lib_t;
+		type pivx_t;
+		type pivx_initrc_exec_t;
+		type pivx_var_lib_t;
 	')
 
-	allow $1 ballcoin_t:process { ptrace signal_perms };
-	ps_process_pattern($1, ballcoin_t)
+	allow $1 pivx_t:process { ptrace signal_perms };
+	ps_process_pattern($1, pivx_t)
 
-	ballcoin_initrc_domtrans($1)
+	pivx_initrc_domtrans($1)
 	domain_system_change_exemption($1)
-	role_transition $2 ballcoin_initrc_exec_t system_r;
+	role_transition $2 pivx_initrc_exec_t system_r;
 	allow $2 system_r;
 
 	files_search_var_lib($1)
-	admin_pattern($1, ballcoin_var_lib_t)
+	admin_pattern($1, pivx_var_lib_t)
 
 ')
 

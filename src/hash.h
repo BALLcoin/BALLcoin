@@ -1,15 +1,17 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The BALLcoin developers
+// Copyright (c) 2015-2019 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BALLcoin_HASH_H
-#define BALLcoin_HASH_H
+#ifndef PIVX_HASH_H
+#define PIVX_HASH_H
 
+#include "arith_uint256.h"
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
+#include "prevector.h"
 #include "serialize.h"
 #include "uint256.h"
 #include "version.h"
@@ -27,13 +29,12 @@
 #include "crypto/sph_simd.h"
 #include "crypto/sph_echo.h"
 
-
 #include <iomanip>
-#include <openssl/sha.h>
 #include <sstream>
 #include <vector>
 
-using namespace std;
+#include <sodium.h>
+
 
 typedef uint256 ChainCode;
 
@@ -112,6 +113,7 @@ GLOBAL sph_shavite512_context   z_shavite;
 GLOBAL sph_simd512_context      z_simd;
 GLOBAL sph_echo512_context      z_echo;
 
+
 #define fillz() do { \
     sph_blake512_init(&z_blake); \
     sph_bmw512_init(&z_bmw); \
@@ -163,30 +165,6 @@ public:
     }
 };
 
-/** Compute the 256-bit hash of a std::string */
-inline std::string Hash(std::string input)
-{
-    unsigned char hash[SHA256_DIGEST_LENGTH];
-    SHA256_CTX sha256;
-    SHA256_Init(&sha256);
-    SHA256_Update(&sha256, input.c_str(), input.size());
-    SHA256_Final(hash, &sha256);
-    stringstream ss;
-    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        ss << hex << setw(2) << setfill('0') << (int)hash[i];
-    }
-    return ss.str();
-}
-
-/** Compute the 256-bit hash of a void pointer */
-inline void Hash(void* in, unsigned int len, unsigned char* out)
-{
-    SHA256_CTX sha256;
-    SHA256_Init(&sha256);
-    SHA256_Update(&sha256, in, len);
-    SHA256_Final(out, &sha256);
-}
-
 /** Compute the 512-bit hash of an object. */
 template <typename T1>
 inline uint512 Hash512(const T1 pbegin, const T1 pend)
@@ -225,46 +203,6 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end, const T2 p2begin, const T2
     return result;
 }
 
-/** Compute the 256-bit hash of the concatenation of three objects. */
-template <typename T1, typename T2, typename T3>
-inline uint256 Hash(const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end)
-{
-    static const unsigned char pblank[1] = {};
-    uint256 result;
-    CHash256().Write(p1begin == p1end ? pblank : (const unsigned char*)&p1begin[0], (p1end - p1begin) * sizeof(p1begin[0])).Write(p2begin == p2end ? pblank : (const unsigned char*)&p2begin[0], (p2end - p2begin) * sizeof(p2begin[0])).Write(p3begin == p3end ? pblank : (const unsigned char*)&p3begin[0], (p3end - p3begin) * sizeof(p3begin[0])).Finalize((unsigned char*)&result);
-    return result;
-}
-
-/** Compute the 256-bit hash of the concatenation of three objects. */
-template <typename T1, typename T2, typename T3, typename T4>
-inline uint256 Hash(const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end, const T4 p4begin, const T4 p4end)
-{
-    static const unsigned char pblank[1] = {};
-    uint256 result;
-    CHash256().Write(p1begin == p1end ? pblank : (const unsigned char*)&p1begin[0], (p1end - p1begin) * sizeof(p1begin[0])).Write(p2begin == p2end ? pblank : (const unsigned char*)&p2begin[0], (p2end - p2begin) * sizeof(p2begin[0])).Write(p3begin == p3end ? pblank : (const unsigned char*)&p3begin[0], (p3end - p3begin) * sizeof(p3begin[0])).Write(p4begin == p4end ? pblank : (const unsigned char*)&p4begin[0], (p4end - p4begin) * sizeof(p4begin[0])).Finalize((unsigned char*)&result);
-    return result;
-}
-
-/** Compute the 256-bit hash of the concatenation of three objects. */
-template <typename T1, typename T2, typename T3, typename T4, typename T5>
-inline uint256 Hash(const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end, const T4 p4begin, const T4 p4end, const T5 p5begin, const T5 p5end)
-{
-    static const unsigned char pblank[1] = {};
-    uint256 result;
-    CHash256().Write(p1begin == p1end ? pblank : (const unsigned char*)&p1begin[0], (p1end - p1begin) * sizeof(p1begin[0])).Write(p2begin == p2end ? pblank : (const unsigned char*)&p2begin[0], (p2end - p2begin) * sizeof(p2begin[0])).Write(p3begin == p3end ? pblank : (const unsigned char*)&p3begin[0], (p3end - p3begin) * sizeof(p3begin[0])).Write(p4begin == p4end ? pblank : (const unsigned char*)&p4begin[0], (p4end - p4begin) * sizeof(p4begin[0])).Write(p5begin == p5end ? pblank : (const unsigned char*)&p5begin[0], (p5end - p5begin) * sizeof(p5begin[0])).Finalize((unsigned char*)&result);
-    return result;
-}
-
-/** Compute the 256-bit hash of the concatenation of three objects. */
-template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6>
-inline uint256 Hash(const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end, const T4 p4begin, const T4 p4end, const T5 p5begin, const T5 p5end, const T6 p6begin, const T6 p6end)
-{
-    static const unsigned char pblank[1] = {};
-    uint256 result;
-    CHash256().Write(p1begin == p1end ? pblank : (const unsigned char*)&p1begin[0], (p1end - p1begin) * sizeof(p1begin[0])).Write(p2begin == p2end ? pblank : (const unsigned char*)&p2begin[0], (p2end - p2begin) * sizeof(p2begin[0])).Write(p3begin == p3end ? pblank : (const unsigned char*)&p3begin[0], (p3end - p3begin) * sizeof(p3begin[0])).Write(p4begin == p4end ? pblank : (const unsigned char*)&p4begin[0], (p4end - p4begin) * sizeof(p4begin[0])).Write(p5begin == p5end ? pblank : (const unsigned char*)&p5begin[0], (p5end - p5begin) * sizeof(p5begin[0])).Write(p6begin == p6end ? pblank : (const unsigned char*)&p6begin[0], (p6end - p6begin) * sizeof(p6begin[0])).Finalize((unsigned char*)&result);
-    return result;
-}
-
 /** Compute the 160-bit hash an object. */
 template <typename T1>
 inline uint160 Hash160(const T1 pbegin, const T1 pend)
@@ -281,22 +219,32 @@ inline uint160 Hash160(const std::vector<unsigned char>& vch)
     return Hash160(vch.begin(), vch.end());
 }
 
+/** Compute the 160-bit hash of a vector. */
+template<unsigned int N>
+inline uint160 Hash160(const prevector<N, unsigned char>& vch)
+{
+    return Hash160(vch.begin(), vch.end());
+}
+
 /** A writer stream (for serialization) that computes a 256-bit hash. */
 class CHashWriter
 {
 private:
     CHash256 ctx;
 
+    const int nType;
+    const int nVersion;
+
 public:
-    int nType;
-    int nVersion;
 
     CHashWriter(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {}
 
-    CHashWriter& write(const char* pch, size_t size)
+    int GetType() const { return nType; }
+    int GetVersion() const { return nVersion; }
+
+    void write(const char* pch, size_t size)
     {
         ctx.Write((const unsigned char*)pch, size);
-        return (*this);
     }
 
     // invalidates the object
@@ -311,7 +259,42 @@ public:
     CHashWriter& operator<<(const T& obj)
     {
         // Serialize to this stream
-        ::Serialize(*this, obj, nType, nVersion);
+        ::Serialize(*this, obj);
+        return (*this);
+    }
+};
+
+/** Reads data from an underlying stream, while hashing the read data. */
+template<typename Source>
+class CHashVerifier : public CHashWriter
+{
+private:
+    Source* source;
+
+public:
+    CHashVerifier(Source* source_) : CHashWriter(source_->GetType(), source_->GetVersion()), source(source_) {}
+
+    void read(char* pch, size_t nSize)
+    {
+        source->read(pch, nSize);
+        this->write(pch, nSize);
+    }
+
+    void ignore(size_t nSize)
+    {
+        char data[1024];
+        while (nSize > 0) {
+            size_t now = std::min<size_t>(nSize, 1024);
+            read(data, now);
+            nSize -= now;
+        }
+    }
+
+    template<typename T>
+    CHashVerifier<Source>& operator>>(T&& obj)
+    {
+        // Unserialize from this stream
+        ::Unserialize(*this, obj);
         return (*this);
     }
 };
@@ -324,6 +307,45 @@ uint256 SerializeHash(const T& obj, int nType = SER_GETHASH, int nVersion = PROT
     ss << obj;
     return ss.GetHash();
 }
+
+/** A writer stream (for serialization) that computes a 256-bit BLAKE2b hash. */
+class CBLAKE2bWriter
+{
+private:
+    crypto_generichash_blake2b_state state;
+
+public:
+    int nType;
+    int nVersion;
+
+    CBLAKE2bWriter(int nTypeIn, int nVersionIn, const unsigned char* personal) : nType(nTypeIn), nVersion(nVersionIn) {
+        assert(crypto_generichash_blake2b_init_salt_personal(
+            &state,
+            NULL, 0, // No key.
+            32,
+            NULL,    // No salt.
+            personal) == 0);
+    }
+
+    CBLAKE2bWriter& write(const char *pch, size_t size) {
+        crypto_generichash_blake2b_update(&state, (const unsigned char*)pch, size);
+        return (*this);
+    }
+
+    // invalidates the object
+    uint256 GetHash() {
+        uint256 result;
+        crypto_generichash_blake2b_final(&state, (unsigned char*)&result, 32);
+        return result;
+    }
+
+    template<typename T>
+    CBLAKE2bWriter& operator<<(const T& obj) {
+        // Serialize to this stream
+        ::Serialize(*this, obj);
+        return (*this);
+    }
+};
 
 unsigned int MurmurHash3(unsigned int nHashSeed, const std::vector<unsigned char>& vDataToHash);
 
@@ -346,10 +368,10 @@ inline uint256 HashQuark(const T1 pbegin, const T1 pend)
     sph_skein512_context ctx_skein;
     static unsigned char pblank[1];
 
-    uint512 mask = 8;
-    uint512 zero = 0;
+    arith_uint512 mask(8);
+    arith_uint512 zero(0);
 
-    uint512 hash[9];
+    arith_uint512 hash[9];
 
     sph_blake512_init(&ctx_blake);
     // ZBLAKE;
@@ -437,7 +459,7 @@ inline uint256 HashX11(const T1 pbegin, const T1 pend)
     sph_echo512_context      ctx_echo;
     static unsigned char pblank[1];
 
-    uint512 hash[11];
+    arith_uint512 hash[11];
 
     sph_blake512_init(&ctx_blake);
     sph_blake512 (&ctx_blake, (pbegin == pend ? pblank : static_cast<const void*>(&pbegin[0])), (pend - pbegin) * sizeof(pbegin[0]));
@@ -486,7 +508,43 @@ inline uint256 HashX11(const T1 pbegin, const T1 pend)
     return hash[10].trim256();
 }
 
-
 void scrypt_hash(const char* pass, unsigned int pLen, const char* salt, unsigned int sLen, char* output, unsigned int N, unsigned int r, unsigned int p, unsigned int dkLen);
 
-#endif // BALLcoin_HASH_H
+
+/** SipHash-2-4 */
+class CSipHasher
+{
+private:
+    uint64_t v[4];
+    uint64_t tmp;
+    int count;
+
+public:
+    /** Construct a SipHash calculator initialized with 128-bit key (k0, k1) */
+    CSipHasher(uint64_t k0, uint64_t k1);
+    /** Hash a 64-bit integer worth of data
+     *  It is treated as if this was the little-endian interpretation of 8 bytes.
+     *  This function can only be used when a multiple of 8 bytes have been written so far.
+     */
+    CSipHasher& Write(uint64_t data);
+    /** Hash arbitrary bytes. */
+    CSipHasher& Write(const unsigned char* data, size_t size);
+    /** Compute the 64-bit SipHash-2-4 of the data written so far. The object remains untouched. */
+    uint64_t Finalize() const;
+};
+
+
+/** Optimized SipHash-2-4 implementation for uint256.
+ *
+ *  It is identical to:
+ *    SipHasher(k0, k1)
+ *      .Write(val.GetUint64(0))
+ *      .Write(val.GetUint64(1))
+ *      .Write(val.GetUint64(2))
+ *      .Write(val.GetUint64(3))
+ *      .Finalize()
+ */
+uint64_t SipHashUint256(uint64_t k0, uint64_t k1, const uint256& val);
+uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint32_t extra);
+
+#endif // PIVX_HASH_H

@@ -1,23 +1,23 @@
 # It is not recommended to modify this file in-place, because it will
 # be overwritten during package upgrades. If you want to add further
 # options or overwrite existing ones then use
-# $ systemctl edit ballcoind.service
+# $ systemctl edit pivxd.service
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/ballcoin/ballcoin.conf
+# /etc/pivx/pivx.conf
 
 [Unit]
-Description=BALLcoin daemon
+Description=PIVX daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ballcoind -daemon -datadir=/var/lib/ballcoin -conf=/etc/ballcoin/ballcoin.conf -pid=/run/ballcoind/ballcoind.pid
-# Creates /run/ballcoind owned by ballcoin
-RuntimeDirectory=ballcoind
-User=ballcoin
+ExecStart=/usr/bin/pivxd -daemon -datadir=/var/lib/pivx -conf=/etc/pivx/pivx.conf -pid=/run/pivxd/pivxd.pid
+# Creates /run/pivxd owned by pivx
+RuntimeDirectory=pivxd
+User=pivx
 Type=forking
-PIDFile=/run/ballcoind/ballcoind.pid
+PIDFile=/run/pivxd/pivxd.pid
 Restart=on-failure
 
 # Hardening measures

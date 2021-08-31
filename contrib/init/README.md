@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: ballcoind.service
-Upstart: ballcoind.conf
-OpenRC:  ballcoind.openrc
-         ballcoind.openrcconf
-CentOS:  ballcoind.init
-macOS:    org.ballcoin.ballcoind.plist
+SystemD: pivxd.service
+Upstart: pivxd.conf
+OpenRC:  pivxd.openrc
+         pivxd.openrcconf
+CentOS:  pivxd.init
+macOS:    org.pivx.pivxd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

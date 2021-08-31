@@ -1,9 +1,9 @@
-/* src/config/ballcoin-config.h.  Generated from ballcoin-config.h.in by configure.  */
-/* src/config/ballcoin-config.h.in.  Generated from configure.ac by autoheader.  */
+/* src/config/pivx-config.h.  Generated from pivx-config.h.in by configure.  */
+/* src/config/pivx-config.h.in.  Generated from configure.ac by autoheader.  */
 
-#ifndef BALL_CONFIG_H
+#ifndef PIV_CONFIG_H
 
-#define BALL_CONFIG_H
+#define PIV_CONFIG_H
 
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
@@ -15,19 +15,22 @@
 #define CLIENT_VERSION_IS_RELEASE true
 
 /* Major version */
-#define CLIENT_VERSION_MAJOR 1
+#define CLIENT_VERSION_MAJOR 2
 
 /* Minor version */
 #define CLIENT_VERSION_MINOR 0
 
 /* Build revision */
-#define CLIENT_VERSION_REVISION 3
+#define CLIENT_VERSION_REVISION 0
 
 /* Version is release */
-#define COPYRIGHT_YEAR 2020
+#define COPYRIGHT_YEAR 2021
 
 /* Define this symbol to build code that uses AVX2 intrinsics */
 #define ENABLE_AVX2 1
+
+/* Define to 1 to enable mining rpc commands */
+/* #undef ENABLE_MINING_RPC */
 
 /* Define this symbol to build code that uses SHA-NI intrinsics */
 #define ENABLE_SHANI 1
@@ -39,10 +42,7 @@
 #define ENABLE_WALLET 1
 
 /* Define to 1 to enable ZMQ functions */
-#define ENABLE_ZMQ 1
-
-/* parameter and return value type for __fdelt_chk */
-/* #undef FDELT_TYPE */
+#define ENABLE_ZMQ 0
 
 /* define if the Boost library is available */
 #define HAVE_BOOST /**/
@@ -52,9 +52,6 @@
 
 /* define if the Boost::Filesystem library is available */
 #define HAVE_BOOST_FILESYSTEM /**/
-
-/* define if the Boost::PROGRAM_OPTIONS library is available */
-#define HAVE_BOOST_PROGRAM_OPTIONS /**/
 
 /* define if the Boost::System library is available */
 #define HAVE_BOOST_SYSTEM /**/
@@ -71,8 +68,8 @@
 /* Define this symbol if the consensus lib has been built */
 /* #undef HAVE_CONSENSUS_LIB */
 
-/* define if the compiler supports basic C++11 syntax */
-#define HAVE_CXX11 1
+/* define if the compiler supports basic C++14 syntax */
+#define HAVE_CXX14 1
 
 /* Define to 1 if you have the declaration of `be16toh', and to 0 if you
    don't. */
@@ -102,9 +99,13 @@
    */
 #define HAVE_DECL_DAEMON 1
 
-/* Define to 1 if you have the declaration of `EVP_MD_CTX_new', and to 0 if
-   you don't. */
-#define HAVE_DECL_EVP_MD_CTX_NEW 0
+/* Define to 1 if you have the declaration of `freeifaddrs', and to 0 if you
+   don't. */
+#define HAVE_DECL_FREEIFADDRS 1
+
+/* Define to 1 if you have the declaration of `getifaddrs', and to 0 if you
+   don't. */
+#define HAVE_DECL_GETIFADDRS 1
 
 /* Define to 1 if you have the declaration of `htobe16', and to 0 if you
    don't. */
@@ -177,6 +178,16 @@
 /* Define to 1 if the system has the `visibility' function attribute */
 #define HAVE_FUNC_ATTRIBUTE_VISIBILITY 1
 
+/* Define this symbol if the BSD getentropy system call is available */
+#define HAVE_GETENTROPY 1
+
+/* Define this symbol if the BSD getentropy system call is available with
+   sys/random.h */
+#define HAVE_GETENTROPY_RAND 1
+
+/* Define this symbol if gmtime_r is available */
+#define HAVE_GMTIME_R 1
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
 
@@ -192,14 +203,8 @@
 /* Define to 1 if you have the `crypt32' library (-lcrypt32). */
 /* #undef HAVE_LIBCRYPT32 */
 
-/* Define to 1 if you have the `crypto' library (-lcrypto). */
-#define HAVE_LIBCRYPTO 1
-
 /* Define to 1 if you have the `gdi32' library (-lgdi32). */
 /* #undef HAVE_LIBGDI32 */
-
-/* Define this symbol if libgmp is installed */
-#define HAVE_LIBGMP 1
 
 /* Define to 1 if you have the `imm32' library (-limm32). */
 /* #undef HAVE_LIBIMM32 */
@@ -224,9 +229,6 @@
 
 /* Define to 1 if you have the `rpcrt4' library (-lrpcrt4). */
 /* #undef HAVE_LIBRPCRT4 */
-
-/* Define to 1 if you have the `rt' library (-lrt). */
-/* #undef HAVE_LIBRT */
 
 /* Define to 1 if you have the `shell32' library (-lshell32). */
 /* #undef HAVE_LIBSHELL32 */
@@ -276,6 +278,15 @@
 /* Define to 1 if you have the <miniupnpc/upnperrors.h> header file. */
 #define HAVE_MINIUPNPC_UPNPERRORS_H 1
 
+/* Define this symbol if you have MSG_DONTWAIT */
+#define HAVE_MSG_DONTWAIT 1
+
+/* Define this symbol if you have MSG_NOSIGNAL */
+#define HAVE_MSG_NOSIGNAL 1
+
+/* Define to 1 if you have the <natpmp.h> header file. */
+#define HAVE_NATPMP_H 1
+
 /* Define if you have POSIX threads libraries and header files. */
 #define HAVE_PTHREAD 1
 
@@ -300,11 +311,23 @@
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
 
+/* Define this symbol if the BSD sysctl() is available */
+/* #undef HAVE_SYSCTL */
+
+/* Define this symbol if the BSD sysctl(KERN_ARND) is available */
+/* #undef HAVE_SYSCTL_ARND */
+
 /* Define to 1 if you have the <sys/endian.h> header file. */
 /* #undef HAVE_SYS_ENDIAN_H */
 
+/* Define this symbol if the Linux getrandom system call is available */
+#define HAVE_SYS_GETRANDOM 1
+
 /* Define to 1 if you have the <sys/prctl.h> header file. */
 #define HAVE_SYS_PRCTL_H 1
+
+/* Define to 1 if you have the <sys/resources.h> header file. */
+/* #undef HAVE_SYS_RESOURCES_H */
 
 /* Define to 1 if you have the <sys/select.h> header file. */
 #define HAVE_SYS_SELECT_H 1
@@ -312,8 +335,14 @@
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #define HAVE_SYS_STAT_H 1
 
+/* Define to 1 if you have the <sys/sysctl.h> header file. */
+#define HAVE_SYS_SYSCTL_H 1
+
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
+
+/* Define to 1 if you have the <sys/vmmeter.h> header file. */
+/* #undef HAVE_SYS_VMMETER_H */
 
 /* Define if thread_local is supported. */
 #define HAVE_THREAD_LOCAL 1
@@ -324,50 +353,50 @@
 /* Define if the visibility attribute is supported. */
 #define HAVE_VISIBILITY_ATTRIBUTE 1
 
-/* Define this symbol if boost sleep works */
-/* #undef HAVE_WORKING_BOOST_SLEEP */
-
-/* Define this symbol if boost sleep_for works */
-#define HAVE_WORKING_BOOST_SLEEP_FOR 1
+/* Define to 1 if you have the <vm/vm_param.h> header file. */
+/* #undef HAVE_VM_VM_PARAM_H */
 
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #define LT_OBJDIR ".libs/"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "www.ballcoin.org"
+#define PACKAGE_BUGREPORT "https://github.com/pivx-project/pivx/issues"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "Pivx Core"
+#define PACKAGE_NAME "PIVX Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "Pivx Core 1.0.3"
+#define PACKAGE_STRING "PIVX Core 2.0.0rc1"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "ballcoin"
+#define PACKAGE_TARNAME "pivx"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL ""
+#define PACKAGE_URL "https://www.pivx.org/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "1.0.3"
+#define PACKAGE_VERSION "2.0.0rc1"
+
+/* Path to the zk params dir during unit tests on windows */
+#define PARAMS_DIR ""
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
 /* #undef PTHREAD_CREATE_JOINABLE */
 
-/* Define this symbol if the qt platform is cocoa */
+/* Define this symbol if the Qt platform is Cocoa */
 /* #undef QT_QPA_PLATFORM_COCOA */
 
-/* Define this symbol if the minimal qt platform exists */
+/* Define this symbol if the minimal Qt platform exists */
 /* #undef QT_QPA_PLATFORM_MINIMAL */
 
-/* Define this symbol if the qt platform is windows */
+/* Define this symbol if the Qt platform is Windows */
 /* #undef QT_QPA_PLATFORM_WINDOWS */
 
-/* Define this symbol if the qt platform is xcb */
+/* Define this symbol if the Qt platform is XCB */
 /* #undef QT_QPA_PLATFORM_XCB */
 
-/* Define this symbol if qt plugins are static */
+/* Define this symbol if Qt plugins are static */
 /* #undef QT_STATICPLUGIN */
 
 /* Define to 1 if you have the ANSI C header files. */
@@ -382,17 +411,18 @@
 /* Define this symbol if coverage is enabled */
 /* #undef USE_COVERAGE */
 
+/* Define if using a custom zk params path */
+/* #undef USE_CUSTOM_PARAMS */
+
 /* Define if dbus support should be compiled in */
-/* #undef USE_DBUS */
+#define USE_DBUS 1
 
-/* Define this symbol to use the gmp implementation */
-#define USE_NUM_GMP 1
+/* NAT-PMP support not compiled if undefined, otherwise value (0 or 1)
+   determines default state */
+#define USE_NATPMP 0
 
-/* Define this symbol to use openssl implementation */
-/* #undef USE_NUM_OPENSSL */
-
-/* Define if QR support should be compiled in */
-/* #undef USE_QRCODE */
+/* Define if QTCHARTS support should be compiled in */
+#define USE_QTCHARTS 1
 
 /* UPnP support not compiled if undefined, otherwise value (0 or 1) determines
    default state */
@@ -421,4 +451,4 @@
 /* Define for large files, on AIX-style hosts. */
 /* #undef _LARGE_FILES */
 
-#endif //BALL_CONFIG_H
+#endif //PIV_CONFIG_H

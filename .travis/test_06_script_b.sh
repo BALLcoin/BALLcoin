@@ -6,7 +6,13 @@
 
 export LC_ALL=C.UTF-8
 
-cd "build/ballcoin-$HOST" || (echo "could not enter distdir build/ballcoin-$HOST"; exit 1)
+cd "build/pivx-$HOST" || (echo "could not enter distdir build/pivx-$HOST"; exit 1)
+
+if [ "$RUN_UNIT_TESTS" = "true" ] || [ "$RUN_FUNCTIONAL_TESTS" = "true" ]; then
+  BEGIN_FOLD params
+    DOCKER_EXEC util/fetch-params.sh $PARAMS_DIR
+  END_FOLD
+fi
 
 if [ "$RUN_UNIT_TESTS" = "true" ]; then
   BEGIN_FOLD unit-tests
@@ -17,6 +23,12 @@ fi
 if [ "$RUN_FUNCTIONAL_TESTS" = "true" ]; then
   BEGIN_FOLD functional-tests
   DOCKER_EXEC test/functional/test_runner.py --combinedlogslen=4000 ${TEST_RUNNER_EXTRA}
+  END_FOLD
+fi
+
+if [ "$RUN_FUZZ_TESTS" = "true" ]; then
+  BEGIN_FOLD fuzz-tests
+  DOCKER_EXEC test/fuzz/test_runner.py -l DEBUG ${DIR_FUZZ_IN}
   END_FOLD
 fi
 

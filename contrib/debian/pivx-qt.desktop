@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
-Name=BALLcoin Core
-Comment=BALLcoin P2P Cryptocurrency
-Comment[fr]=BALLcoin, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=BALLcoin, eşten eşe kriptografik sanal para birimi
-Exec=ballcoin-qt %u
+Name=PIVX Core
+Comment=PIVX P2P Cryptocurrency
+Comment[fr]=PIVX, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=PIVX, eşten eşe kriptografik sanal para birimi
+Exec=pivx-qt %u
 Terminal=false
 Type=Application
-Icon=ballcoin128
-MimeType=x-scheme-handler/ballcoin;
+Icon=pivx128
+MimeType=x-scheme-handler/pivx;
 Categories=Office;Finance;
 StartupWMClass=Pivx-qt

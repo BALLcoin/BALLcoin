@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package ballcoind/ballcoin-qt
-for Debian-based Linux systems. If you compile ballcoind/ballcoin-qt yourself, there are some useful files here.
+This directory contains files used to package pivxd/pivx-qt
+for Debian-based Linux systems. If you compile pivxd/pivx-qt yourself, there are some useful files here.
 
-## ballcoin: URI support ##
+## pivx: URI support ##
 
 
-ballcoin-qt.desktop  (Gnome / Open Desktop)
+pivx-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install ballcoin-qt.desktop
+	sudo desktop-file-install pivx-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your ballcoin-qt binary to `/usr/bin`
-and the `../../share/pixmaps/ballcoin128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your pivx-qt binary to `/usr/bin`
+and the `../../share/pixmaps/pivx128.png` to `/usr/share/pixmaps`
 
-ballcoin-qt.protocol (KDE)
+pivx-qt.protocol (KDE)
 
