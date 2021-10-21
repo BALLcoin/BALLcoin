@@ -24,6 +24,14 @@ jobs:
       run: sudo apt-get update
     - name: Install Dependencies6
       run: sudo apt-get install libdb4.8-dev libdb4.8++-dev
+    - name: Install Dependencies6
+      run: sudo apt install libminiupnpc-dev libnatpmp-dev
+    - name: Install Dependencies6
+      run: sudo apt-get install libzmq3-dev
+    - name: Install Dependencies6
+      run: sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 libqt5svg5-dev libqt5charts5-dev qttools5-dev qttools5-dev-tools libqrencode-dev
+
+      
     - uses: actions/checkout@v2
     - name: autogen
       run: ./autogen.sh
