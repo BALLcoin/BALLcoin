@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
+    - name: UnInstall Dependencies 1
+      run: sudo apt-get remove build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3
     - name: Install Dependencies 1
-      run: sudo apt-get install build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3
+      run: sudo apt-get install build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3      
     - name: Install Dependencies2
       run: sudo apt-get install libgmp-dev libevent-dev libboost-all-dev libsodium-dev cargo
     - name: Install Dependencies3
