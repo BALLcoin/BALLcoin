@@ -18,12 +18,12 @@ jobs:
       run: sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev
     - name: Install Dependencies3
       run: sudo apt-get install software-properties-common
-#    - name: Install Dependencie4
-#      run: sudo add-apt-repository ppa:bitcoin/bitcoin
+    - name: Install Dependencies 4
+      run: sudo add-apt-repository ppa:bitcoin/bitcoin -y
     - name: Install Dependencies5
       run: sudo apt-get update
     - name: Install Dependencies6
-      run: sudo apt-get install libdb5.1-dev libdb5.1++-dev
+      run: sudo apt-get install libdb4.8-dev libdb4.8++-dev
     - uses: actions/checkout@v2
     - name: autogen
       run: ./autogen.sh
