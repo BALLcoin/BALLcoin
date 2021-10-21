@@ -15,7 +15,7 @@ jobs:
     - name: Install Dependencies 1
       run: sudo apt-get install build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3
     - name: Install Dependencies2
-      run: sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev libsodium-dev cargo
+      run: sudo apt-get install libgmp-dev libevent-dev libboost-all-dev libsodium-dev cargo
     - name: Install Dependencies3
       run: sudo apt-get install software-properties-common
     - name: Install Dependencies 4
@@ -24,11 +24,11 @@ jobs:
       run: sudo apt-get update
     - name: Install Dependencies6
       run: sudo apt-get install libdb4.8-dev libdb4.8++-dev
-    - name: Install Dependencies6
+    - name: Install Dependencies7
       run: sudo apt install libminiupnpc-dev libnatpmp-dev
-    - name: Install Dependencies6
+    - name: Install Dependencies8
       run: sudo apt-get install libzmq3-dev
-    - name: Install Dependencies6
+    - name: Install Dependencies9
       run: sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 libqt5svg5-dev libqt5charts5-dev qttools5-dev qttools5-dev-tools libqrencode-dev
 
       
