@@ -33,10 +33,12 @@ jobs:
 
       
     - uses: actions/checkout@v2
+    - name: Build Depends
+      run: cd depends && make -j8 && cd ..
     - name: autogen
       run: ./autogen.sh
     - name: configure
-      run: ./configure
+      run: ./configure --with-gui=no --prefix=$(pwd)/depends/x86_64-pc-linux-gnu
     - name: make
       run: make
     - name: make check
