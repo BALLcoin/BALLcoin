@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu1804
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Install Dependencies 1
