@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ v2.0.0 ]
   pull_request:
-    branches: [ master ]
+    branches: [ v2.0.0 ]
 
 jobs:
   build:
@@ -12,13 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install Dependencies
+    - name: Install Dependencies 1
       run: sudo apt-get install build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3
-//      sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev
-//      sudo apt-get install software-properties-common
-//     sudo add-apt-repository ppa:bitcoin/bitcoin
-//      sudo apt-get update
-//      sudo apt-get install libdb4.8-dev libdb4.8++-dev
+    - name: Install Dependencies2
+      run: sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev
+    - name: Install Dependencies3
+      run: sudo apt-get install software-properties-common
+    - name: Install Dependencie4
+      run: sudo add-apt-repository ppa:bitcoin/bitcoin
+    - name: Install Dependencies5
+      run: sudo apt-get update
+    - name: Install Dependencies6
+      run: sudo apt-get install libdb4.8-dev libdb4.8++-dev
     - uses: actions/checkout@v2
     - name: autogen
       run: ./autogen.sh
