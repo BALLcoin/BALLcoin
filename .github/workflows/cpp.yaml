@@ -15,7 +15,7 @@ jobs:
     - name: Install Dependencies 1
       run: sudo apt-get install build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3
     - name: Install Dependencies2
-      run: sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev
+      run: sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev libsodium-dev cargo
     - name: Install Dependencies3
       run: sudo apt-get install software-properties-common
     - name: Install Dependencies 4
