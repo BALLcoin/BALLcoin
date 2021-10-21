@@ -23,7 +23,7 @@ jobs:
     - name: Install Dependencies5
       run: sudo apt-get update
     - name: Install Dependencies6
-      run: sudo apt-get install libdb4.8-dev libdb4.8++-dev
+      run: sudo apt-get install libdb5.1-dev libdb5.1++-dev
     - uses: actions/checkout@v2
     - name: autogen
       run: ./autogen.sh
