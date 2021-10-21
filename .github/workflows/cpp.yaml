@@ -18,8 +18,8 @@ jobs:
       run: sudo apt-get install libssl-dev libgmp-dev libevent-dev libboost-all-dev
     - name: Install Dependencies3
       run: sudo apt-get install software-properties-common
-    - name: Install Dependencie4
-      run: sudo add-apt-repository ppa:bitcoin/bitcoin
+#    - name: Install Dependencie4
+#      run: sudo add-apt-repository ppa:bitcoin/bitcoin
     - name: Install Dependencies5
       run: sudo apt-get update
     - name: Install Dependencies6
